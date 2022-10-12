@@ -26,25 +26,25 @@ public class SD_KYC_FIELD_TYPES_Controller {
 	SD_KYC_FIELD_MASTER_Repository masterRepo;
 	
 	
-	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,value = "/add_master_details")
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,value = "/insert_types_details")
     public SD_KYC_FIELD_MASTER insert(@RequestBody SD_KYC_FIELD_MASTER master)
     {
         return masterService.add(master);
     }
 	
-	@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE,value = "/update_master_details")
+	@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE,value = "/update_types_details")
     public SD_KYC_FIELD_MASTER update(@RequestBody SD_KYC_FIELD_MASTER master)
     {
         return masterService.update(master);
     }
 	
-	@DeleteMapping(value="/delete_master/{fieldId}")
+	@DeleteMapping(value="/delete_types/{fieldId}")
 	public String deleteData(@PathVariable int fieldId) {
 		return masterService.delete(fieldId);
 		
 	}
 	
-	@GetMapping(value="/get_master_details/{fieldId}")
+	@GetMapping(value="/get_types_details/{fieldId}")
 	public SD_KYC_FIELD_MASTER findById(@PathVariable int fieldId) {
 		
 		if(masterRepo.findById(fieldId).isPresent()) {
@@ -55,7 +55,7 @@ public class SD_KYC_FIELD_TYPES_Controller {
 		
 	}
 	
-	@GetMapping(value="/get_all_master_details")
+	@GetMapping(value="/get_all_types_details")
 	public List<SD_KYC_FIELD_MASTER> findAllById(){
 		return masterRepo.findAll();
 		
