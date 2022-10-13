@@ -16,10 +16,6 @@ public class SD_KYC_FIELD_TYPES_Bean {
 	public void setName(String name) {
 		this.name = name;
 	}
-	@Override
-	public String toString() {
-		return "SD_KYC_FIELD_TYPES_Bean [id=" + id + ", name=" + name + "]";
-	}
 	public SD_KYC_FIELD_TYPES_Bean(Integer id, String name) {
 		super();
 		this.id = id;

@@ -4,7 +4,7 @@ public class SD_KYC_GROUPS_Bean {
 	
 	private Integer id;
 	private String groupName;
-	private String label;
+	private String lable;
 	private Integer groupOrder;
 	private Integer parent;
 	public Integer getId() {
@@ -19,11 +19,11 @@ public class SD_KYC_GROUPS_Bean {
 	public void setGroupName(String groupName) {
 		this.groupName = groupName;
 	}
-	public String getLabel() {
-		return label;
+	public String getLable() {
+		return lable;
 	}
-	public void setLabel(String label) {
-		this.label = label;
+	public void setLable(String lable) {
+		this.lable = lable;
 	}
 	public Integer getGroupOrder() {
 		return groupOrder;
@@ -31,30 +31,24 @@ public class SD_KYC_GROUPS_Bean {
 	public void setGroupOrder(Integer groupOrder) {
 		this.groupOrder = groupOrder;
 	}
-	public Integer getPqarent() {
+	public Integer getParent() {
 		return parent;
 	}
-	public void setPqarent(Integer pqarent) {
-		this.parent = pqarent;
+	public void setParent(Integer parent) {
+		this.parent = parent;
 	}
-	@Override
-	public String toString() {
-		return "SD_KYC_FIELD_GROUPS_Bean [id=" + id + ", groupName=" + groupName + ", label=" + label + ", groupOrder="
-				+ groupOrder + ", pqarent=" + parent + "]";
-	}
-	public SD_KYC_GROUPS_Bean(Integer id, String groupName, String label, Integer groupOrder, Integer pqarent) {
+	public SD_KYC_GROUPS_Bean(Integer id, String groupName, String lable, Integer groupOrder, Integer parent) {
 		super();
 		this.id = id;
 		this.groupName = groupName;
-		this.label = label;
+		this.lable = lable;
 		this.groupOrder = groupOrder;
-		this.parent = pqarent;
+		this.parent = parent;
 	}
 	public SD_KYC_GROUPS_Bean() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
 	
 	
 

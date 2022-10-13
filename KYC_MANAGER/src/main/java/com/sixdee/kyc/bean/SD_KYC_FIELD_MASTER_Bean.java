@@ -1,56 +1,61 @@
 package com.sixdee.kyc.bean;
 
+import com.sixdee.kyc.entity.SD_KYC_FIELD_TYPES;
+import com.sixdee.kyc.entity.SD_KYC_GROUPS;
+
 public class SD_KYC_FIELD_MASTER_Bean {
 	
-	private Integer fieldId;
-	private String fieldName;
-	private String fieldType;
-	private Integer tagType;
-	private String dropDown;
-	public Integer getFieldId() {
-		return fieldId;
+	private Integer id;
+	private String name;
+	private SD_KYC_FIELD_TYPES fieldType;
+	private SD_KYC_GROUPS tagType;
+	private String dropdown;
+	public Integer getId() {
+		return id;
 	}
-	public void setFieldId(Integer fieldId) {
-		this.fieldId = fieldId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	public String getFieldName() {
-		return fieldName;
+	public String getName() {
+		return name;
 	}
-	public void setFieldName(String fieldName) {
-		this.fieldName = fieldName;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getFieldType() {
+	
+	public SD_KYC_FIELD_TYPES getFieldType() {
 		return fieldType;
 	}
-	public void setFieldType(String fieldType) {
+	public void setFieldType(SD_KYC_FIELD_TYPES fieldType) {
 		this.fieldType = fieldType;
 	}
-	public Integer getTagType() {
+	public SD_KYC_GROUPS getTagType() {
 		return tagType;
 	}
-	public void setTagType(Integer tagType) {
+	public void setTagType(SD_KYC_GROUPS tagType) {
 		this.tagType = tagType;
 	}
-	public String getDropDown() {
-		return dropDown;
+	public String getDropdown() {
+		return dropdown;
 	}
-	public void setDropDown(String dropDown) {
-		this.dropDown = dropDown;
+	public void setDropdown(String dropdown) {
+		this.dropdown = dropdown;
 	}
-	@Override
-	public String toString() {
-		return "SD_KYC_FIELD_MASTER_Bean [fieldId=" + fieldId + ", fieldName=" + fieldName + ", fieldType=" + fieldType
-				+ ", tagType=" + tagType + ", dropDown=" + dropDown + "]";
-	}
-	public SD_KYC_FIELD_MASTER_Bean(Integer fieldId, String fieldName, String fieldType, Integer tagType,
-			String dropDown) {
+	
+	public SD_KYC_FIELD_MASTER_Bean(Integer id, String name, SD_KYC_FIELD_TYPES fieldType, SD_KYC_GROUPS tagType,
+			String dropdown) {
 		super();
-		this.fieldId = fieldId;
-		this.fieldName = fieldName;
+		this.id = id;
+		this.name = name;
 		this.fieldType = fieldType;
 		this.tagType = tagType;
-		this.dropDown = dropDown;
+		this.dropdown = dropdown;
+	}
+	public SD_KYC_FIELD_MASTER_Bean() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	
 	
+
 }

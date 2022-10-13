@@ -18,28 +18,30 @@ import com.sixdee.kyc.service.SD_KYC_GROUPS_Service;
 
 @RestController
 public class SD_KYC_GROUPS_Controller {
+
+	@Autowired
+	private SD_KYC_GROUPS_Service group;
 	
 	@Autowired
-	SD_KYC_GROUPS_Service groupsService;
-	 
-	@Autowired
-	SD_KYC_GROUPS_Repository repo;
+	private SD_KYC_GROUPS_Repository repo;
 	
-	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,value = "/add_groups_details")
-    public SD_KYC_GROUPS insert(@RequestBody SD_KYC_GROUPS groups)
-    {
-        return groupsService.add(groups);
-    }
-	
-	@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE,value = "/update_groups_details")
-	public SD_KYC_GROUPS update(@RequestBody SD_KYC_GROUPS groups)
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,value = "/SD_KYC_GROUPS/add")
+	public SD_KYC_GROUPS insert(@RequestBody SD_KYC_GROUPS master)
 	{
-		return groupsService.update(groups);
+		return group.add(master);
 	}
+	
+	
+	@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE,value = "/SD_KYC_GROUPS/update")
+	public SD_KYC_GROUPS update(@RequestBody SD_KYC_GROUPS master)
+	{
+		return group.update(master);
+	}
+	
 	@DeleteMapping(path ="/SD_KYC_GROUPS/delete/{id}")
 	public String deleteAddress(@PathVariable int id)
 	{
-		return groupsService.delete(id);
+		return group.delete(id);
 	}
 	
 	@GetMapping(value="/SD_KYC_GROUPS/find/{id}")
@@ -50,12 +52,11 @@ public class SD_KYC_GROUPS_Controller {
 			return repo.findById(id).get();
 		}
 		else
-			
 			return null;
 	}
 	
 	@GetMapping(value="/SD_KYC_GROUPS/find")
 	public List<SD_KYC_GROUPS> findAllbyId(){
 		return repo.findAll();
-	}	
+	}
 }

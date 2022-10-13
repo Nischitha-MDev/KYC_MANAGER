@@ -10,22 +10,22 @@ import javax.persistence.Table;
 @Entity
 @Table(name="SD_KYC_GROUPS")
 public class SD_KYC_GROUPS {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID",unique = true,nullable = false)
 	private Integer id;
 	
-	@Column(name="GROUP_NAME",unique = true,nullable = false)
+	@Column(name="GROUP_NAME",nullable = false)
 	private String groupName;
 	
-	@Column(name="LABEL",unique = true,nullable = false)
-	private String label;
+	@Column(name="LABEL",nullable = false)
+	private String lable;
 	
-	@Column(name="GROUP_ORDER",unique = true,nullable = false)
+	@Column(name="GROUP_ORDER",nullable = false)
 	private Integer groupOrder;
 	
-	@Column(name="PARENT",unique = true,nullable = false)
+	@Column(name="PARENT",nullable = false)
 	private Integer parent;
 
 	public Integer getId() {
@@ -44,12 +44,12 @@ public class SD_KYC_GROUPS {
 		this.groupName = groupName;
 	}
 
-	public String getLabel() {
-		return label;
+	public String getLable() {
+		return lable;
 	}
 
-	public void setLabel(String label) {
-		this.label = label;
+	public void setLable(String lable) {
+		this.lable = lable;
 	}
 
 	public Integer getGroupOrder() {
@@ -68,17 +68,11 @@ public class SD_KYC_GROUPS {
 		this.parent = parent;
 	}
 
-	@Override
-	public String toString() {
-		return "SD_KYC_FIELD_GROUPS [id=" + id + ", groupName=" + groupName + ", label=" + label + ", groupOrder="
-				+ groupOrder + ", parent=" + parent + "]";
-	}
-
-	public SD_KYC_GROUPS(Integer id, String groupName, String label, Integer groupOrder, Integer parent) {
+	public SD_KYC_GROUPS(Integer id, String groupName, String lable, Integer groupOrder, Integer parent) {
 		super();
 		this.id = id;
 		this.groupName = groupName;
-		this.label = label;
+		this.lable = lable;
 		this.groupOrder = groupOrder;
 		this.parent = parent;
 	}
@@ -87,8 +81,6 @@ public class SD_KYC_GROUPS {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 	
 	
-
 }

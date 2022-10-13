@@ -1,5 +1,7 @@
 package com.sixdee.kyc.service;
 
+import com.sixdee.kyc.bean.SD_KYC_FIELD_TYPES_Bean;
+import com.sixdee.kyc.entity.SD_KYC_FIELD_MASTER;
 import com.sixdee.kyc.entity.SD_KYC_FIELD_TYPES;
 
 public interface SD_KYC_FIELD_TYPES_Service {

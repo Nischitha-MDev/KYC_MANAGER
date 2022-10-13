@@ -8,39 +8,38 @@ import org.springframework.stereotype.Service;
 import com.sixdee.kyc.entity.SD_KYC_FIELD_TYPES;
 import com.sixdee.kyc.repository.SD_KYC_FIELD_TYPES_Repository;
 
-@Service
 @Transactional
-public class SD_KYC_FIELD_TYPES_ServiceImpl implements SD_KYC_FIELD_TYPES_Service {
+@Service
+public class SD_KYC_FIELD_TYPES_ServiceImpl implements SD_KYC_FIELD_TYPES_Service{
 	
 	@Autowired
-	private SD_KYC_FIELD_TYPES_Repository typesRepo;
-
-	@Override
-	public SD_KYC_FIELD_TYPES add(SD_KYC_FIELD_TYPES types) {
-		SD_KYC_FIELD_TYPES ty = new SD_KYC_FIELD_TYPES();
-		ty.setId(types.getId());
-		ty.setName(types.getName());
-		return typesRepo.save(ty) ;
+	private SD_KYC_FIELD_TYPES_Repository repo;
+	
+	public SD_KYC_FIELD_TYPES add(SD_KYC_FIELD_TYPES master)
+	{
+		SD_KYC_FIELD_TYPES type = new SD_KYC_FIELD_TYPES();
+		type.setId(master.getId());
+		type.setName(master.getName());
+		return repo.save(type);
 	}
 
 	@Override
-	public SD_KYC_FIELD_TYPES update(SD_KYC_FIELD_TYPES types) {
-		SD_KYC_FIELD_TYPES ty = new SD_KYC_FIELD_TYPES();
-		ty.setId(types.getId());
-		ty.setName(types.getName());
-		return typesRepo.save(ty) ;
+	public SD_KYC_FIELD_TYPES update(SD_KYC_FIELD_TYPES master) {
+		SD_KYC_FIELD_TYPES type = new SD_KYC_FIELD_TYPES();
+		type.setId(master.getId());
+		type.setName(master.getName());
+		return repo.save(type);
 	}
 
 	@Override
 	public String delete(int id) {
-		typesRepo.deleteById(id);
-		return "Data Deleted" + id;
-		
+		repo.deleteById(id);
+		return "Entity deleted "+id;
 	}
 
 	@Override
 	public SD_KYC_FIELD_TYPES get(int id) {
-		return typesRepo.findById(id).get();
+		return repo.findById(id).get();
 	}
 
 }

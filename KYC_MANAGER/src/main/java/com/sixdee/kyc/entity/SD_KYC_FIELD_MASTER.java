@@ -14,109 +14,85 @@ import javax.persistence.Table;
 @Entity
 @Table(name="SD_KYC_FIELD_MASTER")
 public class SD_KYC_FIELD_MASTER {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="FIELD_ID",unique = true,nullable = false)
-	private Integer fieldId;
+	private Integer id;
 	
-	@Column(name="FIELD_NAME",unique = true,nullable = false)
-	private String fieldName;
+	@Column(name="FIELD_NAME",nullable = false)
+	private String name;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "FIELD_TYPE",referencedColumnName = "ID",nullable =false)
+	
+	@ManyToOne(cascade=CascadeType.ALL)//When you use CascadeType.ALL, whenever you do any operation on the parent all those operations would also get cascaded to the child
+	@JoinColumn(name="FIELD_TYPE",referencedColumnName = "ID",nullable = false)
 	private SD_KYC_FIELD_TYPES fieldType;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="TAG_TYPE",referencedColumnName = "ID",nullable = false)
 	private SD_KYC_GROUPS tagType;
-	
-	
-	
-	@Column(name="DROPDOWN",unique = true,nullable = false)
-	private String dropDown;
 
+	@Column(name="DROPDOWN",nullable = false)
+	private String dropdown;
 
-
-	public Integer getFieldId() {
-		return fieldId;
+	public Integer getId() {
+		return id;
 	}
 
-
-
-	public void setFieldId(Integer fieldId) {
-		this.fieldId = fieldId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-
-
-	public String getFieldName() {
-		return fieldName;
+	public String getName() {
+		return name;
 	}
 
-
-
-	public void setFieldName(String fieldName) {
-		this.fieldName = fieldName;
+	public void setName(String name) {
+		this.name = name;
 	}
-
-
 
 	public SD_KYC_FIELD_TYPES getFieldType() {
 		return fieldType;
 	}
 
-
-
 	public void setFieldType(SD_KYC_FIELD_TYPES fieldType) {
 		this.fieldType = fieldType;
 	}
-
-
 
 	public SD_KYC_GROUPS getTagType() {
 		return tagType;
 	}
 
-
-
 	public void setTagType(SD_KYC_GROUPS tagType) {
 		this.tagType = tagType;
 	}
 
-
-
-	public String getDropDown() {
-		return dropDown;
+	public String getDropdown() {
+		return dropdown;
 	}
 
-
-
-	public void setDropDown(String dropDown) {
-		this.dropDown = dropDown;
+	public void setDropdown(String dropdown) {
+		this.dropdown = dropdown;
 	}
 
-
-
-	public SD_KYC_FIELD_MASTER(Integer fieldId, String fieldName, SD_KYC_FIELD_TYPES fieldType, SD_KYC_GROUPS tagType,
-			String dropDown) {
+	public SD_KYC_FIELD_MASTER(Integer id, String name, SD_KYC_FIELD_TYPES fieldType, SD_KYC_GROUPS tagType,
+			String dropdown) {
 		super();
-		this.fieldId = fieldId;
-		this.fieldName = fieldName;
+		this.id = id;
+		this.name = name;
 		this.fieldType = fieldType;
 		this.tagType = tagType;
-		this.dropDown = dropDown;
+		this.dropdown = dropdown;
 	}
-
-
 
 	public SD_KYC_FIELD_MASTER() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 	
-
+	/*@OneToMany(cascade=CascadeType.ALL)//,fetch=FetchType.EAGER)//Manytoone since many employe belong to one department
+	@JoinColumn(name="EMPADDRES_ID",referencedColumnName = "ID",nullable = false)
+	private List<SD_KYC_FIELD_TYPES> fieldType;*/
 	
 	
 

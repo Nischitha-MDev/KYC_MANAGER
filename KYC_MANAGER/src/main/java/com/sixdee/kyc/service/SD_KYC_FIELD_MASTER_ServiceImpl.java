@@ -12,40 +12,38 @@ public class SD_KYC_FIELD_MASTER_ServiceImpl implements SD_KYC_FIELD_MASTER_Serv
 	
 	@Autowired
 	private SD_KYC_FIELD_MASTER_Repository masterRepo;
-
-	@Override
-	public SD_KYC_FIELD_MASTER add(SD_KYC_FIELD_MASTER master) {
-		SD_KYC_FIELD_MASTER mr = new SD_KYC_FIELD_MASTER();
-		mr.setFieldName(master.getFieldName());
-		mr.setFieldType(master.getFieldType());
-		mr.setTagType(master.getTagType());
-		mr.setDropDown(master.getDropDown());
-		return masterRepo.save(mr);
-	}
-
-	@Override
-	public SD_KYC_FIELD_MASTER update(SD_KYC_FIELD_MASTER master) {
-		SD_KYC_FIELD_MASTER mr = new SD_KYC_FIELD_MASTER();
-		mr.setFieldId(master.getFieldId());
-		mr.setFieldName(master.getFieldName());
-		mr.setFieldType(master.getFieldType());
-		mr.setTagType(master.getTagType());
-		mr.setDropDown(master.getDropDown());
-		return masterRepo.save(mr);
-		
-	}
-
-	@Override
-	public String delete(int fieldId) {
-		masterRepo.deleteById(fieldId);
-		return "Data Deleted" + fieldId;
-	}
-
-	@Override
-	public SD_KYC_FIELD_MASTER get(int fieldId) {
-		return masterRepo.findById(fieldId).get();
-	}
-
 	
+	@Override
+	public SD_KYC_FIELD_MASTER add(SD_KYC_FIELD_MASTER data) {
+		SD_KYC_FIELD_MASTER master=new SD_KYC_FIELD_MASTER();
+		master.setDropdown(data.getDropdown());
+		master.setFieldType(data.getFieldType());
+		master.setName(data.getName());
+		master.setTagType(data.getTagType());
+		return masterRepo.save(master);
+	}
+
+	@Override
+	public SD_KYC_FIELD_MASTER update(SD_KYC_FIELD_MASTER data) {
+		SD_KYC_FIELD_MASTER master=new SD_KYC_FIELD_MASTER();
+		master.setId(data.getId());
+		master.setDropdown(data.getDropdown());
+		master.setFieldType(data.getFieldType());
+		master.setName(data.getName());
+		master.setTagType(data.getTagType());
+		return masterRepo.save(master);
+	}
+
+	@Override
+	public String delete(int id) {
+		masterRepo.deleteById(id);
+		return "Entity deleted "+id;
+	}
+
+	@Override
+	public SD_KYC_FIELD_MASTER get(int id) {
+		
+		return masterRepo.findById(id).get();
+	}
 
 }

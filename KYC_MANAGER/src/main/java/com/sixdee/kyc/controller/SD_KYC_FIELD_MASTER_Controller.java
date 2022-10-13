@@ -20,45 +20,42 @@ import com.sixdee.kyc.service.SD_KYC_FIELD_MASTER_Service;
 public class SD_KYC_FIELD_MASTER_Controller {
 	
 	@Autowired
-	SD_KYC_FIELD_MASTER_Service masterService;
+	private SD_KYC_FIELD_MASTER_Service service;
 	
 	@Autowired
-	SD_KYC_FIELD_MASTER_Repository masterRepo;
-	
-	
-	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,value = "/add_master_details")
-    public SD_KYC_FIELD_MASTER insert(@RequestBody SD_KYC_FIELD_MASTER master)
-    {
-        return masterService.add(master);
-    }
-	
-	@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE,value = "/update_master_details")
-    public SD_KYC_FIELD_MASTER update(@RequestBody SD_KYC_FIELD_MASTER master)
-    {
-        return masterService.update(master);
-    }
-	
-	@DeleteMapping(value="/delete_master/{fieldId}")
-	public String deleteData(@PathVariable int fieldId) {
-		return masterService.delete(fieldId);
-		
+	private SD_KYC_FIELD_MASTER_Repository repo;
+
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,value = "/add")
+	public SD_KYC_FIELD_MASTER insert(@RequestBody SD_KYC_FIELD_MASTER master)
+	{
+		return service.add(master);
 	}
 	
-	@GetMapping(value="/get_master_details/{fieldId}")
-	public SD_KYC_FIELD_MASTER findById(@PathVariable int fieldId) {
-		
-		if(masterRepo.findById(fieldId).isPresent()) {
-			return masterRepo.findById(fieldId).get();
+	@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE,value = "/update")
+	public SD_KYC_FIELD_MASTER update(@RequestBody SD_KYC_FIELD_MASTER master)
+	{
+		return service.update(master);
+	}
+	
+	@DeleteMapping(path ="/delete/{id}")
+	public String deleteAddress(@PathVariable int id)
+	{
+		return service.delete(id);
+	}
+	
+	@GetMapping(value="/find/{id}")
+	public SD_KYC_FIELD_MASTER findbyId(@PathVariable int id){
+
+		if(repo.findById(id).isPresent())
+		{
+			return repo.findById(id).get();
 		}
 		else
-		return null;
-		
+			return null;
 	}
 	
-	@GetMapping(value="/get_all_master_details")
-	public List<SD_KYC_FIELD_MASTER> findAllById(){
-		return masterRepo.findAll();
-		
+	@GetMapping(value="/find")
+	public List<SD_KYC_FIELD_MASTER> findAllbyId(){
+		return repo.findAll();
 	}
-
-}
+	}
